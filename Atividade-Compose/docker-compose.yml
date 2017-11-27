@@ -1,0 +1,16 @@
+version: '2'
+services:
+ postgres:
+  build: ./postgres
+  image: jozimar/banco
+  container_name: banco
+  ports: 
+    - "5433:5432"
+ web:
+  build: .
+  image: jozimar/album
+  container_name: album
+  ports: 
+    - "8081:8080" 
+  links: 
+    - "postgres:host-banco"   
